@@ -1,1 +1,7 @@
-<h1>MO<h1>
+<h1>Bulletins<h1>
+
+<% @bulletins.each do |bulletin| %>
+  <% if bulletin.image.representable? %>
+    <%= image_tag(bulletin.image, height: "200", class: 'card-img-top x-object-fit-cover') %>
+  <% end%>
+<% end%>

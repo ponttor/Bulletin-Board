@@ -10,6 +10,7 @@ gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails', '~> 7.0.8'
 gem 'rollbar'
+gem 'active_storage_validations'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
