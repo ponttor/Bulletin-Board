@@ -1,0 +1,23 @@
+.container.mb-2
+  .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+    .navbar.navbar-expand-md.navbar-light.me-auto
+      a.navbar-brand.me-md-4[href="/"]
+      p.mb-0
+        = button_to t('.title'), root_path, class: "text-decoration-none text-body"
+      .nav-item.me-2.ms-4.d-flex
+        = button_to t('.main'), root_path, class:"nav-link link-dark"
+      - if true #signed_in?
+        .nav-item.me-2.d-flex
+          = button_to t('.profile'), profile_path, class:"nav-link link-dark"
+        .nav-item.me-2.d-flex
+          = button_to t('.add'), new_bulletin_path, class:"nav-link link-dark"
+    ul.nav.nav-pills
+      - if signed_in?
+        - if false #admin?
+          .nav-item.me-2.d-flex
+            = button_to t('.admin'), admin_root_path, class:"nav-link link-dark"
+          .nav-item.me-2.d-flex
+        = button_to t('.logout'), session_path, method: :delete, class:"nav-link link-dark"
+      - else
+        = button_to t('.login'), auth_request_path('github'), method: :post, class:"nav-link link-dark"
+        
