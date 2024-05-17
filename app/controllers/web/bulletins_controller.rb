@@ -4,4 +4,32 @@ class Web::BulletinsController < ApplicationController
   def index
     @bulletins = Bulletin.all
   end
+
+  def show
+    @bulletin = current_bulletin
+  end
+
+  def new
+    @bulletin = current_user.bulletins.build
+  end
+
+  def create
+    @bulletin = current_user.bulletins.build(bulletin_params)
+
+    if @bulletin.save
+      redirect_to profile_path, flash: { info: t('messages.bulletin_created') }
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def bulletin_params
+    params.require(:bulletin).permit(:title, :description, :bulletin_id, :category_id, :image)
+  end
+
+  def current_bulletin
+    Bulletin.find params[:id]
+  end
 end
