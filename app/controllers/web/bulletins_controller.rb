@@ -16,9 +16,9 @@ class Web::BulletinsController < ApplicationController
   def edit
     @bulletin = current_bulletin
 
-    # return unless @bulletin.draft? && current_user != @bulletin.user
+    return unless @bulletin.draft? && current_user != @bulletin.user
 
-    # redirect_to root_path, notice: t('only_for_authors')
+    redirect_to root_path, notice: t('only_for_authors')
   end
 
   def create
@@ -39,6 +39,20 @@ class Web::BulletinsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def archive
+    @bulletin = current_bulletin
+    @bulletin.archive!
+
+    redirect_to profile_path, flash: { info: t('messages.bulletin_archived') }
+  end
+
+  def moderate
+    @bulletin = current_bulletin
+    @bulletin.moderate!
+
+    redirect_to profile_path, flash: { info: t('messages.bulletin_moderated') }
   end
 
   private

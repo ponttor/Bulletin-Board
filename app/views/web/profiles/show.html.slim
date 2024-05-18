@@ -24,16 +24,16 @@
               tr
                 td
                   = bulletin.title
-                / td
+                td
                   = t("#{bulletin.state}")
                 td
                   = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
                 td
                   = link_to t('.show'), bulletin
                   = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'ms-2'
-                  / - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
-                    = link_to t('.moderate'), moderate_bulletin_path(bulletin), method: :patch, class: 'ms-2'
-                  / - if !bulletin.archived? 
-                    = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'ms-2 text-danger'
+                  - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
+                    = button_to t('.moderate'), moderate_bulletin_path(bulletin), method: :patch, class: 'ms-2'
+                  - if !bulletin.archived? 
+                    = button_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'ms-2 text-danger'
         / .mt-4
           = paginate @bulletins, theme: 'bootstrap-5'
