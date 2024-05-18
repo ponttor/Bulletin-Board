@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Bulletin < ApplicationRecord
+  include BulletinStateMachine
 
   belongs_to :user
   belongs_to :category
