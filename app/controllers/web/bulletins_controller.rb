@@ -2,7 +2,8 @@
 
 class Web::BulletinsController < ApplicationController
   def index
-    @bulletins = Bulletin.all
+    @search_query = Bulletin.ransack(params[:q])
+    @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
   end
 
   def show

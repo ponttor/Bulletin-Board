@@ -23,6 +23,10 @@ module AuthConcern
       @current_user ||= User.find_by(id: session[:user_id])
     end
 
+    def admin?
+      current_user&.admin?
+    end
+
     def authenticate_user!
       return if signed_in?
 
@@ -31,7 +35,7 @@ module AuthConcern
     end
 
     def authenticate_admin!
-      return if current_user&.admin?
+      return if admin?
 
       flash[:warn] = t('web.auth.admin_only')
       redirect_to root_path

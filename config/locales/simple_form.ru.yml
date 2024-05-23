@@ -1,0 +1,16 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'Обязательное'
+      mark: '*'
+    error_notification:
+      default_message: "Пожалуйста, исправьте ошибки:"
+    hints:
+      bulletin:
+        category: Выбрать категорию
+      q:
+        title_cont: Искать по названию объявления
+        category_id_eq: Выбрать категорию
+        state_eq: По состоянию

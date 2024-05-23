@@ -2,7 +2,7 @@
 
 class Web::ProfilesController < ApplicationController
   def show
-    @search_query = current_user.bulletins.ransack(params[:search_query])
-    @bulletins = @search_query.result
+    @search_query = current_user.bulletins.ransack(params[:q])
+    @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
   end
 end

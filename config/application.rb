@@ -4,11 +4,12 @@ require_relative 'boot'
 
 require 'rails/all'
 
+ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Aa
+module BulletinBoard
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -20,5 +21,6 @@ module Aa
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    I18n.default_locale = :ru
   end
 end

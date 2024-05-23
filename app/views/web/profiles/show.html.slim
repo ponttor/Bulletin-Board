@@ -1,39 +1,40 @@
 .mt-4.mb-5.pb-5
   .container
-    .p-4.border.shadow.bg-white.rounded-3
-      .mx-4
-        h2.mb-4
-          = t('.my_bulletins')
-        hr
-        / = render 'search_panel'
+    .p-4.align-items-center.border.shadow.bg-white.rounded-3
+      .row
+        .p-3.p-lg-5.pt-lg-0
+          .mb-4.h2
+            = t('.title')
+            hr
+          .mb-2
+            = link_to t('.add_bulletin'), new_bulletin_path
+          = render 'search_panel'
+          .row.mt-2
+            table.table.table-borderless
+              thead
+                tr
+                  th
+                    = t('.name')
+                  th
+                    = t('.state')
+                  th
+                    = t('.publication_date')
+                  th
+                    = t('.actions')
+              tbody
+                - @bulletins.each do |bulletin|
+                  tr
+                    td
+                      = bulletin.title
+                    td
+                      = bulletin.state
+                    td
+                      = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
+                    td
+                      = link_to t('.show'), bulletin
+                      = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'ms-2'
+                      - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
+                        = link_to t('.moderate'), moderate_bulletin_path(bulletin), method: :patch, data: {turbo_method: :patch}, class: 'ms-2'
+                      - if !bulletin.archived? 
+                        = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'ms-2 text-danger'
 
-        = link_to t('.new_bulletin'), new_bulletin_path, class: 'ms-2'
-        table.table.table-borderless
-          thead
-            tr
-              th
-                = t('.name')
-              th
-                = t('.state')
-              th
-                = t('.publication_date')
-              th
-                = t('.action')
-          tbody
-            - @bulletins.each do |bulletin|
-              tr
-                td
-                  = bulletin.title
-                td
-                  = t("#{bulletin.state}")
-                td
-                  = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
-                td
-                  = link_to t('.show'), bulletin
-                  = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'ms-2'
-                  - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
-                    = button_to t('.moderate'), moderate_bulletin_path(bulletin), method: :patch, class: 'ms-2'
-                  - if !bulletin.archived? 
-                    = button_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'ms-2 text-danger'
-        / .mt-4
-          = paginate @bulletins, theme: 'bootstrap-5'

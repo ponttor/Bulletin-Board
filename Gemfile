@@ -15,6 +15,8 @@ gem 'ransack'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim_lint'
+gem 'i18n'
+gem 'kaminari'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -82,3 +84,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem "importmap-rails", "~> 2.0"

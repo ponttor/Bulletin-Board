@@ -1,0 +1,15 @@
+ru:
+  web:
+    profiles:
+      show:
+        title: Мои объявления
+        add_bulletin: Добавить объявление
+        name: Название
+        state: Состояние
+        publication_date: Дата создания
+        actions: Действия
+        show: Показать
+        edit: Редактировать
+        archive: В архив
+        moderate: На модерацию
+        confirm_archive: Вы уверены?
