@@ -1,26 +1,23 @@
 # frozen_string_literal: true
 
 class Web::BulletinsController < ApplicationController
+  before_action :set_bulletin, only: %i[show edit update moderate archive]
+  before_action :authorize_bulletin!
+  before_action :authenticate_user!, only: %i[show new create edit update archive moderate]
+  after_action :verify_authorized
+
   def index
     @search_query = Bulletin.ransack(params[:q])
     @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
   end
 
-  def show
-    @bulletin = current_bulletin
-  end
+  def show; end
 
   def new
-    @bulletin = current_user.bulletins.build
+    @bulletin = current_user.new
   end
 
-  def edit
-    @bulletin = current_bulletin
-
-    return unless @bulletin.draft? && current_user != @bulletin.user
-
-    redirect_to root_path, notice: t('only_for_authors')
-  end
+  def edit; end
 
   def create
     @bulletin = current_user.bulletins.build(bulletin_params)
@@ -42,18 +39,24 @@ class Web::BulletinsController < ApplicationController
     end
   end
 
-  def archive
-    @bulletin = current_bulletin
-    @bulletin.archive!
-
-    redirect_to profile_path, flash: { info: t('messages.bulletin_archived') }
+  def moderate
+    if @bulletin.moderate!
+      flash[:success] = t('.success')
+      redirect_to profile_path
+    else
+      flash.now[:error] = t('.error')
+      render :show
+    end
   end
 
-  def moderate
-    @bulletin = current_bulletin
-    @bulletin.moderate!
-
-    redirect_to profile_path, flash: { info: t('messages.bulletin_moderated') }
+  def archive
+    if @bulletin.archive!
+      flash[:success] = t('.success')
+      redirect_to profile_path
+    else
+      flash.now[:error] = t('.error')
+      render :show
+    end
   end
 
   private
@@ -64,5 +67,13 @@ class Web::BulletinsController < ApplicationController
 
   def current_bulletin
     Bulletin.find params[:id]
+  end
+
+  def set_bulletin
+    @bulletin = Bulletin.find(params[:id])
+  end
+
+  def authorize_bulletin!
+    authorize(@bulletin || Bulletin)
   end
 end

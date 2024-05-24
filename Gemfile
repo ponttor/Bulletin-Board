@@ -8,15 +8,16 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'aasm'
 gem 'active_storage_validations'
+gem 'i18n'
+gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'pundit'
 gem 'rails', '~> 7.0.8'
 gem 'ransack'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim_lint'
-gem 'i18n'
-gem 'kaminari'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -85,4 +86,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem "importmap-rails", "~> 2.0"
+gem 'importmap-rails', '~> 2.0'
