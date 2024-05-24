@@ -17,7 +17,7 @@
           .nav-item.me-2.d-flex
             = link_to t('.admin'), admin_root_path, class:"nav-link link-dark"
           .nav-item.me-2.d-flex
-        = button_to t('.sign_out'), session_path, class:"nav-link link-dark", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+        = button_to t('.sign_out'), session_path, method: :delete, class:"nav-link link-dark"
       - else
         = button_to t('.sign_in'), auth_request_path('github'), method: :post, class:"nav-link link-dark"
         

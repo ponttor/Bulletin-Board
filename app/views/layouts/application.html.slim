@@ -8,11 +8,9 @@ html
     = csp_meta_tag
 
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: "module"
-    
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body
-    .d-flex.flex-column.h-100
-      = render 'layouts/shared/nav'
-      .container
-        = render 'layouts/shared/flash'
-      = yield
+    = render 'layouts/shared/nav'
+    .container
+      = render 'layouts/shared/flash'
+    = yield

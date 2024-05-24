@@ -14,6 +14,18 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :admin do
+      root 'home#index'
+      resources :categories, except: :show
+      resources :bulletins, only: :index do
+        member do
+          patch 'archive'
+          patch 'publish'
+          patch 'reject'
+        end
+      end
+    end
+
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
   end
