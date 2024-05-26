@@ -12,3 +12,8 @@ image_draft:
   name: image
   record: draft (Bulletin)
   blob: image_draft_blob
+
+under_moderation:
+  name: image
+  record: under_moderation (Bulletin)
+  blob: image_draft_blob

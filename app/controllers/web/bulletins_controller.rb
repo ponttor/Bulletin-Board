@@ -20,7 +20,7 @@ class Web::BulletinsController < ApplicationController
   def edit; end
 
   def create
-    pp params
+    Rails.logger.debug params
     @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
@@ -43,21 +43,19 @@ class Web::BulletinsController < ApplicationController
   def moderate
     if @bulletin.moderate!
       flash[:success] = t('.success')
-      redirect_to profile_path
     else
       flash.now[:error] = t('.error')
-      redirect_to profile_path
     end
+    redirect_to profile_path
   end
 
   def archive
     if @bulletin.archive!
       flash[:success] = t('.success')
-      redirect_to profile_path
     else
       flash.now[:error] = t('.error')
-      redirect_to profile_path
     end
+    redirect_to profile_path
   end
 
   private

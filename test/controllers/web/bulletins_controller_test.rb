@@ -137,8 +137,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin = bulletins(:draft)
     sign_in(@user)
 
-    patch bulletin_url(@bulletin), params: { bulletin: @attrs}
-    
+    patch bulletin_url(@bulletin), params: { bulletin: @attrs }
+
     assert_redirected_to bulletin_url(@bulletin)
 
     assert(@bulletin.title, @attrs[:title])
@@ -183,7 +183,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin.reload
 
     assert_redirected_to root_url
-    assert(!@bulletin.archived?)
+    assert_not(@bulletin.archived?)
   end
 
   test 'not author cant archive published' do
@@ -195,7 +195,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin.reload
 
     assert_redirected_to root_url
-    assert(!@bulletin.archived?)
+    assert_not(@bulletin.archived?)
   end
 
   test 'moderate draft' do
@@ -216,7 +216,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin.reload
 
     assert_redirected_to root_url
-    assert(!@bulletin.under_moderation?)
+    assert_not(@bulletin.under_moderation?)
   end
 
   test 'not author cant moderate published' do
@@ -228,6 +228,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin.reload
 
     assert_redirected_to root_url
-    assert(!@bulletin.under_moderation?)
+    assert_not(@bulletin.under_moderation?)
   end
 end

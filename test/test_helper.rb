@@ -18,7 +18,6 @@ end
 
 class ActionDispatch::IntegrationTest
   def sign_in(user, _options = {})
-
     auth_hash = {
       provider: 'github',
       info: {
@@ -44,7 +43,7 @@ end
 class ActiveStorage::Blob
   def self.fixture(filename:, **attributes)
     blob = new(
-      filename: filename,
+      filename:,
       key: generate_unique_secure_token
     )
     io = Rails.root.join("test/fixtures/files/#{filename}").open

@@ -9,35 +9,32 @@ module Web
       end
 
       def reject
-        if current_bulletin.may_reject?
-          current_bulletin.reject!
+        if bulletin.reject!
           redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_rejected') }
         else
-          redirect_to bulletins_path(current_bulletin), flash: { info: t('messages.bulletin_not_rejected') }
+          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_rejected') }
         end
       end
 
       def archive
-        if current_bulletin.may_archive?
-          current_bulletin.archive!
+        if bulletin.archive!
           redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_archived') }
         else
-          redirect_to bulletins_path(current_bulletin), flash: { info: t('messages.bulletin_not_archived') }
+          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_archived') }
         end
       end
 
       def publish
-        if current_bulletin.may_archive?
-          current_bulletin.publish!
+        if bulletin.publish!
           redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_published') }
         else
-          redirect_to bulletins_path(current_bulletin), flash: { info: t('messages.bulletin_not_published') }
+          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_published') }
         end
       end
 
       private
 
-      def current_bulletin
+      def bulletin
         Bulletin.find params[:id]
       end
     end
