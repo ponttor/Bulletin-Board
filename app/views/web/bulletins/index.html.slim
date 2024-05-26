@@ -8,7 +8,7 @@
         = render 'search_panel'
         .row.d-flex
           - @bulletins.each do |bulletin|
-            .col-3.pt-2
+            .col-3.pt-2.bulletin
               .card.shadow-sm
                 - if bulletin.image.representable?
                   = image_tag bulletin.image, height: 200, class: 'card-img-top x-object-fit-cover'

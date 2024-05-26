@@ -2,7 +2,7 @@
 
 class Web::AuthController < ApplicationController
   def callback
-    existing_user = User.find_or_create_by(name: auth[:info][:name], email: auth[:info][:email].downcase)
+    existing_user = User.find_or_create_by(name: auth[:info][:name], email: auth[:info][:email])
     if existing_user.persisted?
       sign_in existing_user
       flash[:notice] = t('.notice')

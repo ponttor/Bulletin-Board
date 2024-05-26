@@ -1,0 +1,3 @@
+image_one_blob: <%= ActiveStorage::Blob.fixture(:filename => 'zero.jpg') %>
+image_published_blob: <%= ActiveStorage::Blob.fixture(:filename => 'zero.jpg') %>
+image_draft_blob: <%= ActiveStorage::Blob.fixture(:filename => 'zero.jpg') %>

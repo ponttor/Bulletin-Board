@@ -36,7 +36,7 @@ class BulletinPolicy < ApplicationPolicy
   private
 
   def author?
-    record.user == user
+    record.user_id == user&.id
   end
 
   def admin?

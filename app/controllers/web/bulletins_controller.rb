@@ -7,23 +7,24 @@ class Web::BulletinsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @search_query = Bulletin.ransack(params[:q])
+    @search_query = Bulletin.published.ransack(params[:q])
     @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
   end
 
   def show; end
 
   def new
-    @bulletin = current_user.new
+    @bulletin = current_user.bulletins.new
   end
 
   def edit; end
 
   def create
+    pp params
     @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
-      redirect_to profile_path, flash: { info: t('messages.bulletin_created') }
+      redirect_to @bulletin, flash: { info: t('messages.bulletin_created') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +34,7 @@ class Web::BulletinsController < ApplicationController
     @bulletin = current_bulletin
 
     if @bulletin.update(bulletin_params)
-      redirect_to profile_path, flash: { info: t('messages.bulletin_updated') }
+      redirect_to @bulletin, flash: { info: t('messages.bulletin_updated') }
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +46,7 @@ class Web::BulletinsController < ApplicationController
       redirect_to profile_path
     else
       flash.now[:error] = t('.error')
-      render :show
+      redirect_to profile_path
     end
   end
 
@@ -55,7 +56,7 @@ class Web::BulletinsController < ApplicationController
       redirect_to profile_path
     else
       flash.now[:error] = t('.error')
-      render :show
+      redirect_to profile_path
     end
   end
 
