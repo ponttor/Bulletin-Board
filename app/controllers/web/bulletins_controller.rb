@@ -24,7 +24,7 @@ class Web::BulletinsController < ApplicationController
     @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
-      redirect_to @bulletin, flash: { info: t('messages.bulletin_created') }
+      redirect_to profile_path, flash: { success: t('.success') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class Web::BulletinsController < ApplicationController
     @bulletin = current_bulletin
 
     if @bulletin.update(bulletin_params)
-      redirect_to @bulletin, flash: { info: t('messages.bulletin_updated') }
+      redirect_to profile_path, flash: { success: t('.success') }
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,6 +43,7 @@ class Web::BulletinsController < ApplicationController
   def to_moderate
     if @bulletin.to_moderate!
       flash[:success] = t('.success')
+      redirect_to profile_path, flash: { success: t('.success') }
     else
       flash.now[:error] = t('.error')
       render :show

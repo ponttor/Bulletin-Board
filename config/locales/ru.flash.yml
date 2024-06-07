@@ -1,0 +1,41 @@
+ru:
+  web:
+    auth:
+      callback:
+        login_success: Добро пожаловать
+        login_error: Что-то не так
+    sessions:
+      destroy:
+        bye: Бай бай!
+    bulletins:
+      create:
+        success: Объявление было создано
+      update:
+        success: Объявление было обновлено
+      to_moderate:
+        success: Объявление отправлено на модерацию
+        error: Ошибочка
+      archive:
+        success: Объявление отправилось в архив
+        error: Ошибочка
+    admin:
+      bulletins:
+        archive:
+          success: Объявление было успешно заархивировано
+          error: Ошибочка
+        publish:
+          success: Объявление было успешно опубликовано
+          error: Ошибочка
+        reject:
+         success: Объявление было успешно возвращено
+         error: Ошибочка
+      categories:
+        destroy:
+          success: Категория была успешно удалена
+          contains_bulletins: Не удалось удалить категорию, так как она содержит объявления
+        update:
+          success: Категория успешно обновлена
+          error: Ошибочка
+        create:
+          success: Категория успешно создана
+          error: Ошибочка

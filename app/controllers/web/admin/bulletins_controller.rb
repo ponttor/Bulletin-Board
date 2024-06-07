@@ -4,31 +4,33 @@ module Web
   module Admin
     class BulletinsController < Web::Admin::ApplicationController
       def index
-        @search_query = Bulletin.ransack(params[:search_query])
-        @bulletins = @search_query.result.order(created_at: :desc).page params[:page]
+        @search_query = Bulletin.ransack(params[:q])
+        @bulletins = @search_query.result.order(created_at: :desc).page(params[:page]).per(params[:per_page])
       end
 
       def reject
         if bulletin.reject!
-          redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_rejected') }
+          redirect_to admin_root_path, flash: { success: t('.success') }
         else
-          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_rejected') }
+          redirect_to admin_root_path, flash: { danger: t('.error') }
         end
       end
 
       def archive
+        redirect_path = params[:redirect_to] || admin_root_path
+
         if bulletin.archive!
-          redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_archived') }
+          redirect_to redirect_path, flash: { success: t('.success') }
         else
-          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_archived') }
+          redirect_to redirect_path, flash: { danger: t('.error') }
         end
       end
 
       def publish
         if bulletin.publish!
-          redirect_to admin_bulletins_path, flash: { info: t('messages.bulletin_published') }
+          redirect_to admin_root_path, flash: { success: t('.success') }
         else
-          redirect_to admin_bulletins_path(bulletin), flash: { info: t('messages.bulletin_not_published') }
+          redirect_to admin_root_path, flash: { danger: t('.error') }
         end
       end
 

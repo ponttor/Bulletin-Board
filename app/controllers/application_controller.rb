@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    redirect_to root_path
+    redirect_to root_path, flash: { warning: t('auth_error') }
   end
 end

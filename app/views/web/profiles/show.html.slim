@@ -36,5 +36,4 @@
                       - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
                         = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'ms-2'
                       - if !bulletin.archived?
-                        = link_to t('.archive'), archive_bulletin_path(bulletin), class: 'ms-2 text-danger', data: { turbo_method: :patch }
-                        / = button_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'ms-2 text-danger'
+                        = link_to t('.archive'), archive_bulletin_path(bulletin), class: 'ms-2 text-danger', data: { turbo_method: :patch, turbo_confirm: t('.confirm') }

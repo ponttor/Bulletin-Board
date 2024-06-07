@@ -5,11 +5,9 @@ class Web::AuthController < ApplicationController
     existing_user = User.find_or_create_by(name: auth[:info][:name], email: auth[:info][:email])
     if existing_user.persisted?
       sign_in existing_user
-      flash[:notice] = t('.notice')
-      redirect_to root_path
+      redirect_to root_path, flash: { success: t('.login_success') }
     else
-      flash.now[:error] = t('.error')
-      redirect_back(fallback_location: root_path)
+      redirect_to root_path, flash: { danger: t('.login_error') }
     end
   end
 

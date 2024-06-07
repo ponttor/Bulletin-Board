@@ -30,15 +30,13 @@ module AuthConcern
     def authenticate_user!
       return if signed_in?
 
-      flash[:warn] = t('web.auth.auth_error')
-      redirect_to root_path
+      redirect_to root_path, flash: { warning: t('.auth_error') }
     end
 
     def authenticate_admin!
       return if admin?
 
-      flash[:warn] = t('web.auth.admin_only')
-      redirect_to root_path
+      redirect_to root_path, flash: { warning: t('.admin_only') }
     end
 
     helper_method :current_user, :signed_in?

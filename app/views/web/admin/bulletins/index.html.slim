@@ -29,8 +29,7 @@
               td
                 = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
               td
-                = link_to t('.show'), bulletin, method: :get, class: "ms-2"
+                = link_to t('.show'), bulletin, class: "me-2"
                 - if !bulletin.archived?
-                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('.are_you_sure') }, class: "text-danger ms-2"
+                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_bulletins_path), data: { turbo_method: :patch, turbo_confirm: t('.confirm') }, class: "text-danger me-2"
         / = paginate @bulletins, theme: 'bootstrap-5'
-        

@@ -10,7 +10,7 @@ ru:
           publish: Опубликовать
           reject: Вернуть
           archive: В архив
-          confirm_publication: Подтвердить публикацию?
+          confirm_publish: Подтвердить публикацию?
           confirm_reject: Отклонить объявление?
           confirm_archive: Подтвердить архивацию?
       categories:
@@ -37,3 +37,4 @@ ru:
           actions: Действия
           show: Показать
           archive: В архив
+          confirm: Вы уверены?

@@ -18,7 +18,7 @@ module Web
       def create
         @category = Category.new(category_params)
         if @category.save
-          redirect_to admin_categories_path, method: :get, flash: { info: t('messages.category_created') }
+          redirect_to admin_categories_path, method: :get, flash: { success: t('.success') }
         else
           render :new, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ module Web
         @category = Category.find(params[:id])
 
         if @category.update(category_params)
-          redirect_to admin_categories_path, flash: { info: t('messages.category_updated') }
+          redirect_to admin_categories_path, flash: { success: t('.success') }
         else
           render :edit, status: :unprocessable_entity
         end
@@ -37,10 +37,10 @@ module Web
       def destroy
         @category = Category.find(params[:id])
         if @category.bulletins.present?
-          redirect_to admin_categories_path, flash: { danger: t('messages.category_contains_bulletins') }
+          redirect_to admin_categories_path, flash: { warning: t('.contains_bulletins') }
         else
           @category.destroy
-          redirect_to admin_categories_path, flash: { info: t('messages.category_deleted') }
+          redirect_to admin_categories_path, flash: { success: t('.success') }
         end
       end
 
