@@ -25,6 +25,16 @@ jobs:
 
       - name: Install dependencies
         run: make setup
+      
+      - name: Set environment variables
+        run: |
+          echo "RAILS_ENV=test" >> $GITHUB_ENV
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+          echo "SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}" >> $GITHUB_ENV
+          echo "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}" >> $GITHUB_ENV
+          echo "HOSTNAME=${{ secrets.HOSTNAME }}" >> $GITHUB_ENV
+          echo "SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}" >> $GITHUB_ENV
+          echo "ROLLBAR_ACCESS_TOKEN=${{ secrets.ROLLBAR_ACCESS_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run Linters
         run: make lint
