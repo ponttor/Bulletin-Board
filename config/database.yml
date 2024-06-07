@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   adapter: postgress
-  database: bulletin-board
-  # url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
