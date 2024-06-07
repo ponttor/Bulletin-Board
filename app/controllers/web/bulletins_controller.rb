@@ -3,7 +3,7 @@
 class Web::BulletinsController < ApplicationController
   before_action :set_bulletin, only: %i[show edit update to_moderate archive]
   before_action :authorize_bulletin!
-  before_action :authenticate_user!, only: %i[show new create edit update archive to_moderate]
+  before_action :authenticate_user!, only: %i[new create edit update archive to_moderate]
   after_action :verify_authorized
 
   def index

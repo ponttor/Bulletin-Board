@@ -18,7 +18,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     bulletin.reload
 
-    assert_redirected_to admin_bulletins_path
+    assert_redirected_to admin_root_path
     assert(bulletin.archived?)
   end
 
@@ -28,7 +28,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     bulletin.reload
 
-    assert_redirected_to admin_bulletins_path
+    assert_redirected_to admin_root_path
     assert bulletin.published?
   end
 
@@ -38,7 +38,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     bulletin.reload
 
-    assert_redirected_to admin_bulletins_path
+    assert_redirected_to admin_root_path
     assert(bulletin.rejected?)
   end
 end
