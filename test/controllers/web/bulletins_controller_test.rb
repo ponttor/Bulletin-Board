@@ -100,8 +100,11 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     post bulletins_url, params: { bulletin: @attrs }
     bulletin = Bulletin.find_by(@attrs.except(:image))
 
-    assert_redirected_to bulletin_url(bulletin)
-    assert bulletin.present?
+    assert_redirected_to(bulletin_url(bulletin))
+    assert(bulletin.present?)
+    assert_equal(bulletin.title, @attrs[:title])
+    assert_equal(bulletin.description, @attrs[:description])
+    assert_equal(bulletin.category_id, @attrs[:category_id])
   end
 
   test 'not create bulletin if user not logged in' do
@@ -198,11 +201,11 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_not(@bulletin.archived?)
   end
 
-  test 'moderate draft' do
+  test 'to_moderate draft' do
     sign_in(@user)
     @bulletin = bulletins(:draft)
 
-    patch moderate_bulletin_url(@bulletin)
+    patch to_moderate_bulletin_url(@bulletin)
 
     @bulletin.reload
 
@@ -210,8 +213,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert(@bulletin.under_moderation?)
   end
 
-  test 'guest cant moderate published' do
-    patch moderate_bulletin_url(@bulletin)
+  test 'guest cant to_moderate published' do
+    patch to_moderate_bulletin_url(@bulletin)
 
     @bulletin.reload
 
@@ -219,11 +222,11 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_not(@bulletin.under_moderation?)
   end
 
-  test 'not author cant moderate published' do
+  test 'not author cant to_moderate published' do
     user = users(:second)
     sign_in(user)
 
-    patch moderate_bulletin_url(@bulletin)
+    patch to_moderate_bulletin_url(@bulletin)
 
     @bulletin.reload
 

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :bulletins, except: :index do
       member do
         patch 'archive'
-        patch 'moderate'
+        patch 'to_moderate'
       end
     end
 

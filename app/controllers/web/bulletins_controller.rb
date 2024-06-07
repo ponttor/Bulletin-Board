@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Web::BulletinsController < ApplicationController
-  before_action :set_bulletin, only: %i[show edit update moderate archive]
+  before_action :set_bulletin, only: %i[show edit update to_moderate archive]
   before_action :authorize_bulletin!
-  before_action :authenticate_user!, only: %i[show new create edit update archive moderate]
+  before_action :authenticate_user!, only: %i[show new create edit update archive to_moderate]
   after_action :verify_authorized
 
   def index
@@ -40,22 +40,23 @@ class Web::BulletinsController < ApplicationController
     end
   end
 
-  def moderate
-    if @bulletin.moderate!
+  def to_moderate
+    if @bulletin.to_moderate!
       flash[:success] = t('.success')
     else
       flash.now[:error] = t('.error')
+      render :show
     end
-    redirect_to profile_path
   end
 
   def archive
     if @bulletin.archive!
       flash[:success] = t('.success')
+      redirect_to profile_path
     else
       flash.now[:error] = t('.error')
+      render :show
     end
-    redirect_to profile_path
   end
 
   private
