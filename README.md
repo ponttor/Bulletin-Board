@@ -5,8 +5,6 @@
 
 *Bulletin Board – is a service where you can post ads, manage them and search existing ones. It is a full website based on the Ruby On Rails. The app allows to upload files, runs authentication, authorization and manages post states by ruby state machines.*
 
-*Within educational program 'Ruby on Rails developer' by [Hexlet](https://ru.hexlet.io/)*
-
 ## System dependencies
 
 - Ruby
@@ -25,4 +23,4 @@ make seed # load fixtures
 
 ## Deploy
 
-[BulletinBoards](https://rails-project-lvl3.onrender.com)
+[BulletinBoard](https://rails-project-lvl3.onrender.com)
