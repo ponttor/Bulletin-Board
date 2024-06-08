@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-5.times {Category.create(name: Faker::Emotion.noun)}
+5.times { Category.create(name: Faker::Emotion.noun) }
 
-5.times {User.create(name: Faker::Movies::BackToTheFuture.character, email: Faker::Internet.email)}
+5.times { User.create(name: Faker::Movies::BackToTheFuture.character, email: Faker::Internet.email) }
 
 categories = Category.all
 users = User.all
@@ -20,5 +20,4 @@ states = Bulletin.aasm.states.map(&:name)
   bulletin.image.attach(io: Rails.root.join('db/images/bul1.jpeg').open, filename: 'bul1.jpeg')
 
   bulletin.save!
-
 end
