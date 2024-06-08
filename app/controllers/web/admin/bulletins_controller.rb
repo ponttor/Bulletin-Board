@@ -5,7 +5,9 @@ module Web
     class BulletinsController < Web::Admin::ApplicationController
       def index
         @search_query = Bulletin.ransack(params[:q])
-        @bulletins = @search_query.result.order(created_at: :desc).page(params[:page])
+        @bulletins = @search_query.result
+                                  .order(created_at: :desc)
+                                  .page(params[:page])
       end
 
       def reject
