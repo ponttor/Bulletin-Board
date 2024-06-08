@@ -38,7 +38,5 @@ module AuthConcern
 
       redirect_to root_path, flash: { warning: t('.admin_only') }
     end
-
-    helper_method :current_user, :signed_in?
   end
 end
