@@ -17,3 +17,6 @@
                     h5.card-title = bulletin.title
                   h6.card-subtitle.mb-2.text-muted
                     = time_ago_in_words(bulletin.created_at)
+
+= paginate @bulletins, theme: 'bootstrap-5',
+        pagination_class: 'pagination flex-wrap justify-content-center'

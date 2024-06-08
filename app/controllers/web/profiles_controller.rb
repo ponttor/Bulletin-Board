@@ -5,6 +5,6 @@ class Web::ProfilesController < ApplicationController
 
   def show
     @search_query = current_user.bulletins.ransack(params[:q])
-    @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
+    @bulletins = @search_query.result.page(params[:page])
   end
 end

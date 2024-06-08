@@ -24,4 +24,7 @@
                   = link_to t('.reject'), reject_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('.confirm_reject') }, class: "me-1"
                   - unless bulletin.archived?
                     = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_root_path), data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') }, class: "text-danger ms-1"
-        / = paginate @bulletins, theme: 'bootstrap-5'
+
+= paginate @bulletins, theme: 'bootstrap-5',
+        pagination_class: 'pagination flex-wrap justify-content-center'
+

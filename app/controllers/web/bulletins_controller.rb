@@ -8,7 +8,7 @@ class Web::BulletinsController < ApplicationController
 
   def index
     @search_query = Bulletin.published.ransack(params[:q])
-    @bulletins = @search_query.result.page(params[:page]).per(params[:per_page])
+    @bulletins = @search_query.result.page(params[:page])
   end
 
   def show; end
