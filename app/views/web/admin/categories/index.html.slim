@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-md-3
+      = render 'layouts/shared/nav_admin'
+    .col-md-9
+      h2
+        = t('.title')
+      = link_to t('.add_category'), new_admin_category_path
+      table.table.table-borderless
+        thead
+          tr
+            th
+              = t('.id')
+            th
+              = t('.name')
+            th
+              = t('.actions')
+        tbody
+          - @categories.each do |category|
+            tr
+              td
+                = category.id
+              td
+                = category.name
+              td
+                = link_to t('.edit'), edit_admin_category_path(category), class: "me-1"
+                = link_to t('.destroy'), admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: t('.destroy_confirmation') }, class: "text-danger me-1"

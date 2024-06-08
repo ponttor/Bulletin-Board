@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        bulletin:
+          attributes:
+            title:
+              blank: не может быть пустым
+              too_short: недостаточной длины (не может быть меньше 3 символов)
+            description:
+              blank: не может быть пустым
+            category:
+              required: не может отсутствовать
+            image:
+              blank: не может быть пустым
+        category:
+          attributes:
+            name:
+              blank: не может быть пустым

@@ -1,0 +1,12 @@
+.mt-4.mb-5.pb-5
+  .container
+    .p-4.border.shadow.bg-white.rounded-3
+      .row
+        .col-md-3
+          .ms-3
+            = render 'layouts/shared/nav_admin'
+        .col-md-9
+          .container
+            h2.mb-4 = t('.title')
+            hr
+          == render 'form', category: @category, url: admin_categories_path
