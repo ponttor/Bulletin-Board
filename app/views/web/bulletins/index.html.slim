@@ -1,0 +1,22 @@
+.mt-4.mb-5.pb-5
+  .container
+    .p-4.border.shadow.bg-white.rounded-3
+      .mx-4
+        h2.mb-4
+          = t('.title')
+        hr
+        = render 'search_panel'
+        .row.d-flex
+          - @bulletins.each do |bulletin|
+            .col-3.pt-2.bulletin
+              .card.shadow-sm
+                - if bulletin.image.representable?
+                  = image_tag bulletin.image, height: 200, class: 'card-img-top x-object-fit-cover'
+                .card-body
+                  = link_to bulletin_path(bulletin) do
+                    h5.card-title = bulletin.title
+                  h6.card-subtitle.mb-2.text-muted
+                    = time_ago_in_words(bulletin.created_at)
+
+= paginate @bulletins, theme: 'bootstrap-5',
+        pagination_class: 'pagination flex-wrap justify-content-center'

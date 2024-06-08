@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+admin:
+  name: Admin
+  email: MyString
+  admin: true
+
+one:
+  name: Name
+  email: MyString_2
+  admin: false
+
+second:
+  name: Name2
+  email: MyString_4
+  admin: false

@@ -1,0 +1,56 @@
+ru:
+  auth_error: Вы не авторизованы для выполнения этого действия
+  admin_only: Эта секция доступна только для администраторов
+  reset: Сброс
+  search: Искать
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "около часа"
+        other: "около %{count} часов"
+      less_than_x_minutes:
+        one: "меньше минуты"
+        other: "меньше %{count} минут"
+      x_minutes:
+        one: "1 минута"
+        other: "%{count} минут"
+      about_x_months:
+        one: "около месяца"
+        other: "около %{count} месяцев"
+      about_x_years:
+        one: "около года"
+        other: "около %{count} лет"
+      over_x_years:
+        one: "больше года"
+        other: "больше %{count} лет"
+      almost_x_years:
+        one: "почти год"
+        other: "почти %{count} лет"
+      half_a_minute: "полминуты"
+      less_than_x_seconds:
+        one: "меньше секунды"
+        other: "меньше %{count} секунд"
+      x_seconds:
+        one: "1 секунда"
+        other: "%{count} секунд"
+      less_than_x_days:
+        one: "меньше дня"
+        other: "меньше %{count} дней"
+      x_days:
+        one: "1 день"
+        other: "%{count} дней"
+      about_x_weeks:
+        one: "около недели"
+        other: "около %{count} недель"
+      over_x_weeks:
+        one: "больше недели"
+        other: "больше %{count} недель"
+      less_than_x_months:
+        one: "меньше месяца"
+        other: "меньше %{count} месяцев"
+      x_months:
+        one: "1 месяц"
+        other: "%{count} месяцев"
+      almost_x_months:
+        one: "почти месяц"
+        other: "почти %{count} месяцев"

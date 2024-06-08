@@ -1,0 +1,5 @@
+- if flash.any?
+  - flash.each do |type, msg|
+    .alert.alert-dismissible.fade.show class="alert-#{type.to_s}"
+      = msg
+      button.btn-close[type="button" data-bs-dismiss="alert" aria-label="Close"]

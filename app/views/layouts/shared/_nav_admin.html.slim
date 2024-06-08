@@ -1,0 +1,5 @@
+u.nav.flex-column.nav-pills
+  li.nav-item
+    = link_to t('.moderated'), admin_root_path, class: class_names('nav-link link-dark text-decoration-none', { active: current_page?(admin_root_path) })
+    = link_to t('.all_bulletins'), admin_bulletins_path, class: class_names('nav-link link-dark', { active: current_page?(admin_bulletins_path) })
+    = link_to t('.all_categories'), admin_categories_path, class: class_names('nav-link link-dark', { active: current_page?(admin_categories_path) })

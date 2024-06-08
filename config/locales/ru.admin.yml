@@ -1,0 +1,40 @@
+ru:
+  web:
+    admin:
+      home:
+        index:
+          title: Объявления на модерации
+          name: Название
+          publication_date: Дата создания
+          actions: Действия
+          publish: Опубликовать
+          reject: Вернуть
+          archive: В архив
+          confirm_publish: Подтвердить публикацию?
+          confirm_reject: Отклонить объявление?
+          confirm_archive: Подтвердить архивацию?
+      categories:
+        index:
+          id: 'ID'
+          name: Название
+          title: Все категории
+          actions: Действия
+          edit: Редактировать
+          add_category: Добавить категорию
+          destroy: Удалить
+          destroy_confirmation: Вы уверены?
+        new:
+          title: Новая категория
+          create: Создать
+        edit:
+          title: Редактировать категорию
+      bulletins:
+        index:
+          title: Все объявления
+          state: Состояние
+          publication_date: Дата создания
+          name: Название
+          actions: Действия
+          show: Показать
+          archive: В архив
+          confirm: Вы уверены?

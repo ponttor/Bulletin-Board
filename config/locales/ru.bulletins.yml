@@ -1,0 +1,12 @@
+ru:
+  web:
+    bulletins:
+      index:
+        title: Доска объявлений
+        header: Объявления
+      new:
+        title: Добавить объявление
+      show:
+        info: Информация
+      edit:
+        title: Редактировать объявление
