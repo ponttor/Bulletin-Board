@@ -11,3 +11,8 @@ ru:
         title_cont: Искать по названию объявления
         category_id_eq: Выбрать категорию
         state_eq: По состоянию
+  helpers:
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}

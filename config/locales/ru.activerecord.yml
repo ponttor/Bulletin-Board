@@ -20,9 +20,8 @@ ru:
         category: Категория
         image: Фотография
         created_at: Дата публикации
-        state:
-          draft: Черновик
-          under_moderation: На модерации
-          published: Опубликовано
-          rejected: Отклонено
-          archived: В архиве
+        state_under_moderation: На модерации
+        state_rejected: Возвращено
+        state_draft: Черновик
+        state_published: Опубликовано
+        state_archived: В архиве

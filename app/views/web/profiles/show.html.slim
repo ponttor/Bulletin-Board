@@ -27,7 +27,7 @@
                     td
                       = bulletin.title
                     td
-                      = bulletin.state
+                      = t("#{bulletin.state}")
                     td
                       = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
                     td
