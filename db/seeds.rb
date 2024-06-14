@@ -7,7 +7,7 @@ categories = Category.all
 users = User.all
 states = Bulletin.aasm.states.map(&:name)
 
-200.times do |i|
+100.times do |i|
   bulletin = Bulletin.new(
     title: "bul #{i}",
     description: "Description #{i}",
@@ -19,4 +19,5 @@ states = Bulletin.aasm.states.map(&:name)
   bulletin.image.attach(io: Rails.root.join('db/images/bul1.jpeg').open, filename: 'bul1.jpeg')
 
   bulletin.save!
+  sleep 0.5
 end
