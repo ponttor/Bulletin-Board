@@ -31,7 +31,8 @@
               td
                 = link_to t('.show'), bulletin, class: 'me-2'
                 - unless bulletin.archived?
-                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_bulletins_path), data: { turbo_method: :patch, turbo_confirm: t('.confirm') }, class: 'text-danger me-2'
+                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_bulletins_path),
+                    data: { turbo_method: :patch, turbo_confirm: t('.confirm') }, class: 'text-danger me-2'
 
 = paginate @bulletins, theme: 'bootstrap-5',
         pagination_class: 'pagination flex-wrap justify-content-center'
