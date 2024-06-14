@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :profile, only: :show
     resource :session, only: :destroy
 
-    resources :bulletins, except: :index do
+    resources :bulletins do
       member do
         patch 'archive'
         patch 'to_moderate'
