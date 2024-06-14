@@ -5,7 +5,7 @@
         = f.input :title_cont, label: false
       .col-4
         = f.input :state_eq, as: :select,
-                  collection: Bulletin.aasm.states.map {|name| [t("#{name.to_s}"), name]},
+                  collection: bulletin_states_for_select,
                   label: false
       .col-2
           = f.submit t('search'), class: 'btn btn-primary me-2'

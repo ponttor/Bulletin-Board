@@ -9,8 +9,6 @@ AllCops:
     - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'vendor/**/*'
-    - 'node_modules/**/*'
     - 'tmp/**/*'
   SuggestExtensions: false
 

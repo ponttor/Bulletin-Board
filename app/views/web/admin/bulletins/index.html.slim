@@ -25,14 +25,13 @@
               td
                 = link_to bulletin.title, bulletin
               td
-                = t("#{bulletin.state}")
+                = t(bulletin.state.to_s)
               td
                 = distance_of_time_in_words_to_now(bulletin.created_at, highest_measure_only: true)
               td
-                = link_to t('.show'), bulletin, class: "me-2"
-                - if !bulletin.archived?
-                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_bulletins_path), data: { turbo_method: :patch, turbo_confirm: t('.confirm') }, class: "text-danger me-2"
+                = link_to t('.show'), bulletin, class: 'me-2'
+                - unless bulletin.archived?
+                  = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_bulletins_path), data: { turbo_method: :patch, turbo_confirm: t('.confirm') }, class: 'text-danger me-2'
 
 = paginate @bulletins, theme: 'bootstrap-5',
         pagination_class: 'pagination flex-wrap justify-content-center'
-

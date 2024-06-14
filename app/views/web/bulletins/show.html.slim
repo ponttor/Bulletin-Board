@@ -10,7 +10,7 @@
           .row
             .col-8
               - if @bulletin.image_attachment
-                = image_tag(@bulletin.image, width: "240", class: 'img-thumbnail mb-2')
+                = image_tag(@bulletin.image, width: '240', class: 'img-thumbnail mb-2')
               p
                 = @bulletin.description
             .col-4
