@@ -1,5 +1,5 @@
 .p-3.bg-light.border.shadow-sm.rounded-3
-  = search_form_for @search_query, url: root_path do |f|
+  = search_form_for search_query, url: root_path do |f|
     .row.my-2
       .col-6
         = f.input :title_cont, label: false

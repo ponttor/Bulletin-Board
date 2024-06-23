@@ -1,43 +1,20 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: title
-  description: MyText
-  category: one
-  user: one
-  state: draft
-
 published:
-  title: title1
-  description: MyText
-  category: two
-  user: one
-  state: published
-
-published2:
-  title: title2
-  description: MyText
-  category: one
-  user: one
-  state: published
-
-published3:
-  title: title3
-  description: MyText
+  title: published bulletin
+  description: published info
   category: one
   user: one
   state: published
 
 draft:
-  title: draft
-  description: MyText
+  title: draft bulletin
+  description: draft info
   category: two
   user: one
   state: draft
 
 under_moderation:
-  title: under_moderation
-  description: MyText
+  title: under moderation bulletin
+  description: under moderation info
   category: two
   user: one
   state: under_moderation

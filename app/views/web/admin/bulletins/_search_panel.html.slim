@@ -1,5 +1,5 @@
 .rounded-3.pt-2
-  = search_form_for @search_query, url: admin_bulletins_path do |f|
+  = search_form_for search_query, url: admin_bulletins_path do |f|
     .row.my-2
       .col-6
         = f.input :title_cont, label: false, hint: :defaults

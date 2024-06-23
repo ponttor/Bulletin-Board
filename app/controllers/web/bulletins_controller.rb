@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-class Web::BulletinsController < ApplicationController
-  before_action :set_bulletin, only: %i[show edit update to_moderate archive]
-  before_action :authorize_bulletin!
+class Web::BulletinsController < Web::ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update archive to_moderate]
-  after_action :verify_authorized
 
   def index
     @search_query = Bulletin.published.ransack(params[:q])
@@ -13,16 +10,21 @@ class Web::BulletinsController < ApplicationController
                               .page(params[:page])
   end
 
-  def show; end
+  def show
+    @bulletin = current_bulletin
+    authorize @bulletin
+  end
 
   def new
     @bulletin = current_user.bulletins.new
   end
 
-  def edit; end
+  def edit
+    @bulletin = current_bulletin
+    authorize @bulletin
+  end
 
   def create
-    Rails.logger.debug params
     @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
@@ -34,6 +36,7 @@ class Web::BulletinsController < ApplicationController
 
   def update
     @bulletin = current_bulletin
+    authorize @bulletin
 
     if @bulletin.update(bulletin_params)
       redirect_to profile_path, flash: { success: t('.success') }
@@ -43,40 +46,32 @@ class Web::BulletinsController < ApplicationController
   end
 
   def to_moderate
-    if @bulletin.to_moderate!
-      flash[:success] = t('.success')
-      redirect_to profile_path, flash: { success: t('.success') }
-    else
-      flash.now[:error] = t('.error')
-      render :show
-    end
+    @bulletin = current_bulletin
+    authorize @bulletin
+
+    return unless @bulletin.to_moderate!
+
+    flash[:success] = t('.success')
+    redirect_to profile_path, flash: { success: t('.success') }
   end
 
   def archive
-    if @bulletin.archive!
-      flash[:success] = t('.success')
-      redirect_to profile_path
-    else
-      flash.now[:error] = t('.error')
-      render :show
-    end
+    @bulletin = current_bulletin
+    authorize @bulletin
+
+    return unless @bulletin.archive!
+
+    flash[:success] = t('.success')
+    redirect_to profile_path
   end
 
   private
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :bulletin_id, :category_id, :image)
+    params.require(:bulletin).permit(:title, :description, :category_id, :image)
   end
 
   def current_bulletin
     Bulletin.find params[:id]
-  end
-
-  def set_bulletin
-    @bulletin = Bulletin.find(params[:id])
-  end
-
-  def authorize_bulletin!
-    authorize(@bulletin || Bulletin)
   end
 end

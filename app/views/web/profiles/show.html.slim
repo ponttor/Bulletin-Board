@@ -8,7 +8,7 @@
             hr
           .mb-2
             = link_to t('.add_bulletin'), new_bulletin_path
-          = render 'search_panel'
+          = render 'search_panel', search_query: @search_query
           .row.mt-2
             table.table.table-borderless
               thead
@@ -33,9 +33,9 @@
                     td
                       = link_to t('.show'), bulletin
                       = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'ms-2'
-                      - if !bulletin.archived? && !bulletin.under_moderation? && !bulletin.published?
+                      - if bulletin.may_to_moderate?
                         = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'ms-2'
-                      - unless bulletin.archived?
+                      - unless bulletin.may_archive?
                         = link_to t('.archive'), archive_bulletin_path(bulletin), class: 'ms-2 text-danger', data: { turbo_method: :patch, turbo_confirm: t('.confirm') }
 
 = paginate @bulletins, theme: 'bootstrap-5',

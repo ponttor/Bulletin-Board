@@ -11,29 +11,23 @@ module Web
       end
 
       def reject
-        if bulletin.reject!
-          redirect_to admin_root_path, flash: { success: t('.success') }
-        else
-          redirect_to admin_root_path, flash: { danger: t('.error') }
-        end
+        return unless bulletin.reject!
+
+        redirect_to admin_root_path, flash: { success: t('.success') }
       end
 
       def archive
         redirect_path = params[:redirect_to] || admin_root_path
 
-        if bulletin.archive!
-          redirect_to redirect_path, flash: { success: t('.success') }
-        else
-          redirect_to redirect_path, flash: { danger: t('.error') }
-        end
+        return unless bulletin.archive!
+
+        redirect_to redirect_path, flash: { success: t('.success') }
       end
 
       def publish
-        if bulletin.publish!
-          redirect_to admin_root_path, flash: { success: t('.success') }
-        else
-          redirect_to admin_root_path, flash: { danger: t('.error') }
-        end
+        return unless bulletin.publish!
+
+        redirect_to admin_root_path, flash: { success: t('.success') }
       end
 
       private

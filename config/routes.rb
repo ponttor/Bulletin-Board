@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :profile, only: :show
     resource :session, only: :destroy
 
-    resources :bulletins do
+    resources :bulletins, only: %i[index show edit update new create] do
       member do
         patch 'archive'
         patch 'to_moderate'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root 'home#index'
-      resources :categories, except: :show
+      resources :categories, only: %i[index destroy edit update new create]
       resources :bulletins, only: :index do
         member do
           patch 'archive'

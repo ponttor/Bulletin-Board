@@ -13,6 +13,7 @@ ru:
           confirm_publish: Подтвердить публикацию?
           confirm_reject: Отклонить объявление?
           confirm_archive: Подтвердить архивацию?
+          admin_only: Эта секция доступна только для администраторов
       categories:
         index:
           id: 'ID'

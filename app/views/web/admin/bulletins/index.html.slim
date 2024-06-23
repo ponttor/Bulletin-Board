@@ -6,7 +6,7 @@
       h2
         = t('.title')
 
-      = render 'search_panel'
+      = render 'search_panel', search_query: @search_query
 
       table.table.table-borderless
         thead

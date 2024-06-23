@@ -12,10 +12,6 @@ class Bulletin < ApplicationRecord
   validates :image, attached: true, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[category_id created_at description id state title updated_at user_id]
-  end
-
-  def self.ransackable_associations(_auth_object = nil)
-    %w[category image_attachment image_blob user]
+    %w[category_id state title]
   end
 end

@@ -9,14 +9,6 @@ class BulletinPolicy < ApplicationPolicy
     author? || published? || admin?
   end
 
-  def new?
-    user
-  end
-
-  def create?
-    user
-  end
-
   def edit?
     author?
   end

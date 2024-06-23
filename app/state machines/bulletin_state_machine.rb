@@ -5,7 +5,6 @@ module BulletinStateMachine
 
   included do
     include AASM
-    include AasmStateEventConcern
 
     aasm column: 'state' do
       state :draft, initial: true

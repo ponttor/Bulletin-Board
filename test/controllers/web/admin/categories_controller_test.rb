@@ -43,8 +43,12 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'destroy' do
+    category_id = @category.id
+    @category.bulletins.destroy_all
+
     delete admin_category_path(@category)
+
     assert_redirected_to admin_categories_url
-    assert_nil Category.find_by @attrs
+    assert_nil Category.find_by(id: category_id)
   end
 end

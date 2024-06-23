@@ -2,15 +2,15 @@
 
 admin:
   name: Admin
-  email: MyString
+  email: a@iu.com
   admin: true
 
 one:
-  name: Name
-  email: MyString_2
+  name: Ivan
+  email: i@iu.com
   admin: false
 
 second:
-  name: Name2
-  email: MyString_4
+  name: Daniel
+  email: d@iu.com
   admin: false
