@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Category.create([{ name: 'Black' }, { name: 'White' }, { name: 'Red' }])
+# Category.create([{ name: 'essential' }, { name: 'advanced' }, { name: 'master' }])
 # User.create([{ name: 'Bin', email: 'bin@bin.ru' }, { name: 'Min', email: 'min@bin.ru' }])
 
 # categories = Category.all
@@ -19,5 +19,4 @@
 #   bulletin.image.attach(io: Rails.root.join('db/images/bul1.jpeg').open, filename: 'bul1.jpeg')
 
 #   bulletin.save!
-#   sleep 0.5
 # end
