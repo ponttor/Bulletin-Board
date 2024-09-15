@@ -19,6 +19,8 @@ gem 'ransack'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim_lint'
+gem 'aws-sdk-s3'
+gem 'file_validators'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
