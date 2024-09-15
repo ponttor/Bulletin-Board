@@ -17,7 +17,7 @@ class AddData < ActiveRecord::Migration[7.1]
         state: states.sample
       )
 
-      bulletin.image.attach(io: Rails.root.join('db/images/bul1.jpeg').open, filename: 'bul1.jpeg')
+      bulletin.image.attach(Bulletin.first.image.blob)
 
       bulletin.save!
     end
