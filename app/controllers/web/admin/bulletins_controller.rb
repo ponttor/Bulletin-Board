@@ -11,29 +11,29 @@ module Web
       end
 
       def reject
-        return unless bulletin.reject!
-
-        redirect_to admin_root_path, flash: { success: t('.success') }
+        handle_bulletin_event(:reject)
       end
 
       def archive
-        redirect_path = params[:redirect_to] || admin_root_path
-
-        return unless bulletin.archive!
-
-        redirect_to redirect_path, flash: { success: t('.success') }
+        handle_bulletin_event(:archive)
       end
 
       def publish
-        return unless bulletin.publish!
-
-        redirect_to admin_root_path, flash: { success: t('.success') }
+        handle_bulletin_event(:publish)
       end
 
       private
 
       def bulletin
         Bulletin.find params[:id]
+      end
+
+      def handle_bulletin_event(event)
+        bulletin.send("#{event}!")
+        flash[:success] = t('.success')
+        redirect_to admin_root_path
+      rescue StandardError
+        flash[:error] = t('.error')
       end
     end
   end

@@ -6,7 +6,7 @@ ru:
         login_error: Что-то не так
     sessions:
       destroy:
-        bye: Бай бай!
+        bye: бай бай!
     bulletins:
       create:
         success: Объявление было создано
@@ -14,21 +14,21 @@ ru:
         success: Объявление было обновлено
       to_moderate:
         success: Объявление отправлено на модерацию
-        error: Ошибочка
+        error: Не удалось модерировать
       archive:
         success: Объявление отправилось в архив
-        error: Ошибочка
+        error: Не удалось архивировать
     admin:
       bulletins:
         archive:
           success: Объявление было успешно заархивировано
-          error: Ошибочка
+          error: Не удалось архивировать
         publish:
           success: Объявление было успешно опубликовано
-          error: Ошибочка
+          error: Не удалось опубликовать
         reject:
          success: Объявление было успешно возвращено
-         error: Ошибочка
+         error: Не удалось опубликовать реджекнуть
       categories:
         destroy:
           success: Категория была успешно удалена

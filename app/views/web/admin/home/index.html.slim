@@ -22,7 +22,7 @@
                 td
                   = link_to t('.publish'), publish_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('.confirm_publish') }, class: 'me-1'
                   = link_to t('.reject'), reject_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('.confirm_reject') }, class: 'me-1'
-                  - unless bulletin.archived?
+                  - if bulletin.may_archive?
                     = link_to t('.archive'), archive_admin_bulletin_path(bulletin, redirect_to: admin_root_path),
                       data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') }, class: 'text-danger ms-1'
 

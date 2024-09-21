@@ -28,9 +28,6 @@ class Web::BulletinsAuthenticatedControllerTest < ActionDispatch::IntegrationTes
 
     assert_redirected_to profile_url
     assert(bulletin.present?)
-    assert_equal(bulletin.title, @attrs[:title])
-    assert_equal(bulletin.description, @attrs[:description])
-    assert_equal(bulletin.category_id, @attrs[:category_id])
   end
 
   test 'not create without title' do

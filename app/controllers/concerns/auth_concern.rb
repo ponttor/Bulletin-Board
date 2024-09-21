@@ -4,6 +4,8 @@ module AuthConcern
   extend ActiveSupport::Concern
 
   included do
+    helper_method :current_user, :signed_in?
+
     private
 
     def sign_in(user)

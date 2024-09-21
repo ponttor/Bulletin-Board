@@ -46,23 +46,15 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def to_moderate
-    @bulletin = current_bulletin
-    authorize @bulletin
+    authorize current_bulletin
 
-    return unless @bulletin.to_moderate!
-
-    flash[:success] = t('.success')
-    redirect_to profile_path, flash: { success: t('.success') }
+    handle_bulletin_event(:to_moderate)
   end
 
   def archive
-    @bulletin = current_bulletin
-    authorize @bulletin
+    authorize current_bulletin
 
-    return unless @bulletin.archive!
-
-    flash[:success] = t('.success')
-    redirect_to profile_path
+    handle_bulletin_event(:archive)
   end
 
   private
@@ -73,5 +65,13 @@ class Web::BulletinsController < Web::ApplicationController
 
   def current_bulletin
     Bulletin.find params[:id]
+  end
+
+  def handle_bulletin_event(event)
+    current_bulletin.send("#{event}!")
+    flash[:success] = t('.success')
+    redirect_to profile_path
+  rescue StandardError
+    flash[:error] = t('.error')
   end
 end

@@ -2,12 +2,12 @@
 
 class Web::AuthController < Web::ApplicationController
   def callback
-    existing_user = User.find_or_create_by(email: auth[:info][:email])
-    if existing_user.persisted?
-      sign_in existing_user
-      redirect_to root_path, flash: { success: t('.login_success') }
+    user = find_or_create_user
+
+    if user.persisted?
+      successful_sign_in(user)
     else
-      redirect_to root_path, flash: { danger: t('.login_error') }
+      failed_sign_in
     end
   end
 
@@ -15,5 +15,25 @@ class Web::AuthController < Web::ApplicationController
 
   def auth
     request.env['omniauth.auth']
+  end
+
+  def find_or_create_user
+    user = User.find_or_initialize_by(email: auth[:info][:email])
+
+    unless user.persisted?
+      user.name = auth[:info][:name]
+      user.save
+    end
+
+    user
+  end
+
+  def successful_sign_in(user)
+    sign_in user
+    redirect_to root_path, flash: { success: t('.login_success') }
+  end
+
+  def failed_sign_in
+    redirect_to root_path, flash: { danger: t('.login_error') }
   end
 end
